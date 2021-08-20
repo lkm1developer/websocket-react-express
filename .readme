@@ -1,0 +1,9 @@
+step to run websocket app
+1. navigate to chat directory
+1.a npm install
+1.b npm start
+
+2. navigate to server directory
+2.a npm install
+2.b node server.js
+
