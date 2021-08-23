@@ -4,10 +4,10 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    socket: socketIOClient.connect('http://localhost:3005/'),
-    // socket: socketIOClient.connect('http://www.mrexy.com:5000'),
+    // socket: socketIOClient.connect('http://localhost:3005/'),
+    socket: socketIOClient.connect('http://www.mrexy.com:5000'),
     msg:'',
-    connected:'Not'
+    connected:'Not22'
   }
  
 
@@ -15,14 +15,15 @@ class App extends React.Component {
     
 
     const socket = this.state.socket;
+    
     socket.on("connect", () => {
       console.log('connected');
       this.setState({connected:'Yes'})
     });
-
-    socket.on('msg', data => {
+    socket.emit('detectObject', { data: 'image_blob' })
+    socket.on('detectedObject', data => {
       console.log({data});
-      this.setState({msg:data})
+      this.setState({msg:JSON.stringify(data)})
     });
 
   }
